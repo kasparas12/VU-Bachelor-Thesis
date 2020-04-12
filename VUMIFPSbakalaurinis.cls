@@ -1,7 +1,7 @@
-%% VUMIFPSkursinis.cls – „Tik svajotojai-romantikai gali pagerinti nepakeičiamą pasaulį“
+%% VUMIFPSbakalaurinis.cls – „Tik svajotojai-romantikai gali pagerinti nepakeičiamą pasaulį“
 %% Created by   „Atviras Kodas Lietuvai“  2015
 %
-%% Latest version available here: https://github.com/LIKS/course_work_template_vu_mif_se
+%% Latest version available here: https://github.com/LIKS/bachelor_thesis_template_vu_mif_se
 %% Any suggestions or contributions are welcome!  Also see: http://latex.liks.lt!
 %
 %%  License CC BY 4.0 (see more at http://creativecommons.org/licenses/by/4.0/) 
@@ -11,10 +11,10 @@
 % link to the license, and indicate if changes were made.)
 
 
-% Kursinio darbo apiforminimas pagal Vilniaus universiteto
-% Matematikos ir informatikos fakulteto Programų sistemų katedros reikalavimus
+% Bakalaruo baigiamojo darbo apiforminimas pagal Vilniaus universiteto
+% Matematikos ir informatikos fakulteto Programų sistemų studijų skyriaus reikalavimus
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{VUMIFPSkursinis}[2015/02/03 1.0 VU MIF SE course work class]
+\ProvidesClass{VUMIFPSbakalaurinis}[2015/02/03 1.0 MIF SE bachelor thesis class]
 \LoadClass[12pt, a4paper]{article}
 \RequirePackage{LTPlius}  % Nustatymų sulietuvinimas
 \RequirePackage{fontspec} % Šrifto pasirinkimui
@@ -25,7 +25,7 @@
     BoldFont=*-bold,
     ItalicFont=*-italic,
     BoldItalicFont=*-bolditalic
-]{texgyretermes}  % Teksto  šrifatas bus Nimbus Roman No9 L, kuris yra
+]{texgyretermes}  % Teksto  šriftas bus Nimbus Roman No9 L, kuris yra
                   % atviras Times New Roman šrifto atitikmuo
 \RequirePackage{setspace} % Intervalas tarp eilučių
 \RequirePackage[

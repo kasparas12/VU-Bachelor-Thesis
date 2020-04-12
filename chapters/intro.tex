@@ -1,0 +1,61 @@
+\sectionnonum{Įvadas}
+Interneto paslaugos šiais laikais yra neatsiejama žmonių gyvenimo dalis.
+Norėdami individualizuoti turinį, sustiprinti taikomosios programos saugumą ar siekdami
+iš anksto išvengti kenkėjiškų tikslų turinčių asmenų ar sukurtų robotų, paslaugų tiekėjai
+siekia identifikuoti savo naudotojus. Interneto naudotojų skaičiui perkopus 4 milijardus \cite{InternetUsers2018},
+o kiekvienam naudotojui vidutiniškai turint po 7 skirtingas socialines paskyras \cite{Mander2017}, asmenų
+tapatybių valdymas, autentifikavimas ir autorizavimas tampa vis didesniu iššūkiu.
+
+Tapatybių valdymas kelia problemų naudotojams. Bene didžiausi atsiradę keblumai:
+milžiniškas įsimintinų slaptažodžių kiekis bei sunkumai kontroliuojant savo asmens duomenų sklaidą
+skirtingose sistemose. Vidutiniškai interneto naudotojas turi 25 slaptažodžių reikalaujančias paskyras
+ir per dieną turi įvesti 8-is slaptažodžius \cite{Florencio2007}. Susidarius tokiai situacijai, per didelis įsimintinų slaptažodžių kiekis neretai 
+priverčia naudotojus paaukoti saugumą dėl patogumo
+ir pradėti naudoti tą patį slaptažodį sirtingoms sistemoms \cite{Pashalidis2003, Samar1999}. Naudotojas, turėdamas keletą
+paskyrų skirtingose sistemose, taip pat praranda dalį savo asmens duomenų kontrolės. Jam tenka pasitikėti
+taikomosios programos naudojamomis technologijomis ir metodais bei tikėtis, kad jie bus pakankamai saugūs
+ir stabilūs, o suteikti asmens duomenys nepasieks nepageidaujamų adresatų. Didėjant naudojamų paslaugų kiekiui,
+naudotojo skaitmeninės tapatybės duomenis turi vis daugiau taikomųjų programų ir bent vienai iš jų
+patyrus programišių įsilaužimą ar kitokią nesėkmę, jautrūs naudotojo duomenys gali būti paviešinti. 
+
+Taikomi skirtingi metodai skaitmeninei tapatybei internete valdyti. 
+Šiais laikais vienas dažniausiai internete sutinkamų sprendimų yra jungtinis (angl. \textit{federated}) tapatybės valdymas ir jo suteikiamas vienkartinis prisijungimas (angl. \textit{single sign-on}).
+Šis sprendimas leidžia naudotojui pasirinkti
+vieną tapatybės tiekėją (angl. \textit{identity provider}) ir patikėti jam skaitmeninės tapatybės valdymą. Tokiu
+būdu naudotojui pakanka turėti paskyrą tik tapatybės tiekėjo sistemoje, o kreipiantis į paslaugas naudotis jau turima tapatybės tiekėjo paskyra.
+Tačiau šis sprendimo būdas taip pat turi aiškių trūkumų: naudotojas negali prisijungti
+prie paslaugų, nepalaikančių pasirinkto tapatybės tiekėjo, jo pasiekiamumas
+tampa vieninteliu nesėkmės tašku (angl. \textit{single point of failure}), naudotojas taip pat praranda dalį savo asmens duomenų kontrolės.
+Naršantis internete asmuo yra priverstas pasitikėti tapatybės tiekėjo
+gebėjimu perduoti tik naudotojo leistus asmens duomenis ir tik toms trečiosioms šalims, kurias jis patvirtina.
+Kaip rodo \textit{Cambridge Analytica} incidentas \cite{CambridgeAnalytica}, net didžiosios kompanijos, tokios
+kaip \enquote{Facebook}, ne visada sugeba tai užtikrinti.
+
+Blokų grandinė (angl. \textit{blockchain}) yra nauja alternatyva skaitmeninės tapatybės valdymui. Ši technologija veikia kaip
+paskirstytų įrašų platforma (angl. \textit{distributed ledger platform}), kurioje kiekvienas įrašas yra nekintamas, o visi
+užfiksuoti įrašai atspindi tikslią transakcijų istoriją nuo pat grandinės sukūrimo \cite{Baars2016}. Saugant tapatybės duomenis šioje grandinėje ir
+pritaikius reikiamą blokų grandinės pasiekiamumo lygį įrašų rašymui ir skaitymui, asmuo visada
+žinotų, kokia trečioji šalis gali pasiekti kokius tapatybės duomenis. Kadangi blokų grandinė yra decentralizuota, pritaikius ją skaitmeninės tapatybės valdyme taip pat
+būtų galima išvengti šioje srityje dažnos vienintelio nesėkmės taško problemos. 
+
+Šiame darbe blokų grandinės tinkamumas skaitmeninės tapatybės valdymui tiriamas iš naudotojo perspektyvos.
+Pateikus esminius naudotojų poreikius identiteto valdymui,
+apžvelgiamas dabar naudojamų sistemų gebėjimas įgyvendinti šiuos reikalavimus. Apibendrinus pagrindines neišspręstas naudotojams kylančias problemas,
+tiriama, kaip blokų grandinė gali padėti jas įveikti, kokie šios technologijos panaudojimo skaitmeniniame tapatybės valdyme
+pranašumai, trūkumai bei pritaikymo barjerai (angl. \textit{adoption barriers}).
+\\
+
+\textbf{Darbo tikslas} - įvertinti blokų grandinės tinkamumą skaitmeninės tapatybės valdymui.
+\\
+
+\textbf{Darbe keliami uždaviniai}:
+
+\begin{enumerate}
+    \item Apžvelgti skaitmeninės tapatybės valdymo sprendimus, vertinant jų gebėjimą įgyvendinti naudotojų poreikius.
+    \item Įvardyti naudotojams kylančias problemas skaitmeninės tapatybės valdyme.
+    \item Apžvelgti blokų grandinės technologiją ir jos savybes.
+    \item Atsižvelgus į blokų grandinės savybes ir esamą jos taikymą tapatybės srityje.
+    įvertinti blokų grandinės gebėjimą spręsti įvardytas naudotojų problemas.
+    \item Pateikti blokų grandinės panaudojimo atvejį skaitmeninės tapatybės valdymui ir sukurti jo veikimą demonstruojantį prototipą.
+    \item Įvertinti pateiktą sprendimą apibūdinant jo privalumus, trūkumus ir galimus pritaikymo barjerus.
+\end{enumerate}
