@@ -1,0 +1,41 @@
+APIE PALEMON�
+
+Pakete pateikta lituanistinio Palemono �rifto did�ioji versija (versija 2.1) kartu su licencijos nuostatomis (Licencijos nuostatos.txt), diegimo instrukcija (skaityti.txt) ir demonstraciniais tekstais (tekstai.pdf).
+
+Palemono versija 2.1 nuo ankstesniosios (1.3) skiriasi i�pl�sta �enkl� aibe ir pakoreguotais �enkl� pie�iniais. Ji pateikiama kartu su knyga: Ona Aleknavi�ien�, Laima Grumadien�, Albertas Gurskas, Petras Skirmantas, Mindaugas Strockis, Vladas Tumasonis. Lituanistinis �riftas Palemonas. Vilnius: Tautini� bendrij� namai, 2005, 304 p., ISBN 9955-546-22-0. Elektronin� �io leidinio versij� PDF formatu galima rasti adresu: www.vlkk.lt. Joje yra b�tinos informacijos apie �� �rift�: susisteminti �enkl� apra�ai, �enkl� ir j� komponent� kodai. 
+
+Dabar visos keturios Palemono atmainos (normalioji, kursyvin�, pary�kinta ir pary�kinta kursyvin�) turi visus koduo�i� (kod� lenteli�) CP1250 (centrin�s Europos), CP1251 (kirilikos), CP1252 (lotyn� I), CP1253 (graik�), CP1254 (turk�), CP1257 (Baltijos �ali�) �enklus ir visas kir�iuotas lietuvi�kas raides.  Dvi i� j� - normalioji ir kursyvin� - turi ir itin gaus� (apie 4000) speciali�j� lituanistikai pritaikyt� �enkl�, d�l kuri� Palemonas ir buvo sumanytas, rinkin�. Did�iausi� �io rinkinio dal� sudaro specialieji ra�menys: 1) tarmi� fonetin�s transkripcijos; 2) sen�j� ra�t�; 3) baltistikos ir indoeuropeistikos. Did�iumai j� Unikodo standartas n�ra nustat�s konkre�i� kod�, tod�l kodai jiems parinkti i� �iame standarte numatytos Priva�iosios srities. 
+
+KAIP �DIEGTI PALEMON�
+
+1. Kairiuoju pel�s klavi�u paspauskite mygtuk� �Prad�ti� (�Start�).
+
+2. Atvertame meniu pasirinkite (spragtel�kite kairiuoju pel�s klavi�u) element� �Parametrai� (�Settings�).
+
+3. I� de�iniau atsiv�rusio meniu pasirinkite element� �Valdymo skydas� (�Control Panel�). Atsivers langas �Valdymo skydas�(�Control Panel�).
+
+4. Lange �Valdymo skydas� (�Control Panel�) suraskite ir dukart spragtel�kite kairiuoju pel�s klavi�u �enkliuk� ��riftai� (�Fonts�). Atsivers kompiuterio �rift� langas. 
+
+5. Kairiuoju pel�s klavi�u spragtel�kite �io lango vir�uje esan�io meniu element� �Failas� (�File�).
+
+6. I� atsiv�rusio meniu pasirinkite element� �Install New Font...�. Atsiv�rusiame lange �Add Fonts� nurodykite �koordinates�, kur �sira��te parsisi�sdint� ir J�s� i�skleist� �rifto paket�. Lange �List of fonts:� pamatysite keturi� �rift�, sudaran�i� Palemono rinkin�, pavadinimus (Palem-nm.ttf, Palem-it.ttf, Palem-bd.ttf, Palem-bi.ttf).
+
+7. �sitikinkite, ar langelis �Copy fonts to Fonts folder� pa�ym�tas varnele. Jei varnel�s n�ra, langel� spragtel�kite kairiuoju pel�s klavi�u.
+
+8. Kairiuoju pel�s klavi�u paspauskite de�iniajame lango �Add Fonts� kra�te esant� mygtuk� �Select All�. Taip pa�ym�site Palemono rinkin� sudaran�i� �rift� pavadinimus.
+
+9. Kairiuoju pel�s klavi�u paspauskite mygtuk� �OK� ir Palemono �riftai bus �rengti J�s� kompiuteryje.
+
+10. U�verkite visus diegiant �rift� atvertus langus.
+
+11. Duokite kompiuterio kartotinio paleidimo komand� �Paleisti i� naujo� (�Restart�).
+
+Pastaba. Taip pat �sidiegsite ir naujesnes Palemono versijas, kurios bus teikiamos VLKK tinklalapyje (www.vlkk.lt). Prie� �rengdami naujesn� versij� b�tinai pa�alinkite sen�j�. Tai darykite �itaip:
+
+a) atlikite veiksmus, nurodytus 1�4 punktuose;
+b) �rift� s�ra�o lange pa�ym�kite Palemono rinkinio �rift� pavadinimus (Palem-nm.ttf, Palem-it.ttf, Palem-bd.ttf, Palem-bi.ttf);
+c) i� meniu eilut�s pasirinkite element� �Failas� (�File�);
+d) i� atverto meniu pasirinkite element� �Delete� ir teigiamai atsakykite � klausim�, ar tikrai norite pa�alinti pa�ym�tus �riftus.
+
+Pastabas ir pasi�lymus pra�om si�sti doc. dr. Vladui Tumasoniui adresu: Vladas.tumasonis@maf.vu.lt.
+

@@ -1,0 +1,70 @@
+\RequirePackage[hyphens]{url}
+\documentclass{VUMIFPSkursinis}
+\usepackage{algorithmicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{color}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{subfig}
+\usepackage{wrapfig}
+\usepackage{parcolumns}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{color, colortbl}
+\usepackage[bottom]{footmisc}
+\usepackage{biblatex}
+
+%PAKEISTA, tarpai tarp sąrašo elementų
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\setenumerate{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+% for code to look good
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Nustatymai
+%\setmainfont{Palemonas}   % Pakeisti teksto šriftą į Palemonas (turi būti įdiegtas sistemoje)
+\bibliography{bibliografija}
+\addbibresource{bibliografija.bib}
+
+% Titulinio aprašas
+\university{Vilniaus universitetas}
+\faculty{Matematikos ir informatikos fakultetas}
+\department{Programų sistemų bakalauro studijų programa}
+\papertype{Bakalauro baigiamasis darbas}
+\title{Paskirstyta saityno paieškos roboto sistema didelio masto modernių
+taikomųjų žiniatinklio programų rodyklių sudarymui}
+\titleineng{Distributed Web Crawling System for Large-Scale Indexing of Modern Web Applications}
+\status{4 kurso 5 grupės studentas}
+\author{Kasparas Taminskas}
+\supervisor{Lekt. Aurimas Šimkus}
+\reviewer{Lekt. Aurimas Šimkus}
+\date{Vilnius – \the\year}
+
+\begin{document}
+\lstset{language=C}
+
+% PAKEISTA	
+\maketitle
+\cleardoublepage\pagenumbering{arabic}
+
+%TURINYS
+\setcounter{page}{2}
+\tableofcontents
+
+\sectionnonum{Santrauka}
+\sectionnonum{Abstract}
+\sectionnonum{Įvadas}
+\section{Dėstymas}
+\sectionnonum{Rezultatai ir išvados}
+\printbibliography[title={Naudotinos literatūros sąrašas}]
+
+\end{document}
