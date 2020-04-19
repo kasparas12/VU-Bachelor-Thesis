@@ -24,6 +24,8 @@
 \usepackage{color}
 \usepackage{lscape}
 \usepackage[bottom]{footmisc}
+\usepackage{float}
+\usepackage{biblatex}
 
 
 % for code to look good
@@ -58,7 +60,8 @@
 
 % Nustatymai
 %\setmainfont{Palemonas}   % Pakeisti teksto šriftą į Palemonas (turi būti įdiegtas sistemoje)
-\bibliography{Bakalaurinis}
+\addbibresource{Bakalauro.bib}
+\bibliography{Bakalauro}
 
 \input{chapters/titlePage}
 
@@ -71,11 +74,17 @@
 \input{chapters/summary}
 \tableofcontents
 \input{chapters/intro}
+\input{chapters/topic}
+\input{chapters/architectures_overview}
+\input{chapters/crawling_modern_pages}
+\input{chapters/requirements}
+\input{chapters/prototype_architecture}
+\input{chapters/experiment}
+\input{chapters/results}
+\input{chapters/conclusion}
 
 \printbibliography[heading=bibintoc]
  
-\% input{chapters/glossary}
-
 % \appendix
 % \input{annexes/attributeStoreContract}
 % \input{annexes/serviceRegisterContract}
