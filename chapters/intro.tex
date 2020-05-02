@@ -1,17 +1,25 @@
 \sectionnonum{Įvadas}
-//TODO: įvadas (angl. \textit{adoption barriers}).
+    Saityno žvalgymo sistemos (angl. -- \textit{Web Crawling Systems}) atsirado kartu su pirmosiomis interneto paieškos programomis ir išlieka esminis jų veikimo pagrindas. Tokios programos leidžia turinio agregavimo platformoms efektyviai identifikuoti naujus ar kintačius saityno resursus ir indeksuoti jų turinį, kurį vėliau gali pasiekti paieškos sistemų naudotojai, formuodami paieškos terminais grįstas užklausas. Saityno žvalgymo robotai taip pat dažnai naudojami archyvuojant žiniatinklio resursus, identifikuojant autorių teises pažeidžiančias svetaines ar kenksmingus puslapius, taip pat atliekant Didžiųjų duomenų gavybą.
+    
+    
+    Žiniatinklio žvalgymo problema nėra nauja ir literatūroje analizuojama jau kelis dešimtmečius, nuo pat pirmųjų interneto naršyklių atsiradimo. Apie jos aktualumą verčia kalbėti eksponentinio Interneto resursų augimo tempai: 2020 duomenimis žiniatinklyje yra virš 1,7 mlrd svetainių. (iš kurių tik 12\% veikiančių ir pasiekiamų). Šis skaičius lyginant su 2010 statistika padidėjo net 8 kartus \cite{InternetLiveStats}. Toks spartus žiniatinklio resursų kiekio augimas reikalauja atitinkamos lengvai išplečiamos sistemos architektūros, taip pat daug skaičiavimo ir talpinimo resursų: procesoriaus branduolių skaičiavimo galios, operatyviosios atminties, spartaus disko vietos ir didelio tinklo pralaidumo.
+    
+    
+    Literatūroje absoliuti dauguma aprašytų viešų saityno peržvalgos sistemų architektūrų ir jų realizacijų remiasi sudėtingos infrastruktūros nuoma ar pirkimu, jos paruošimu (aplinkų konfigūravimas) ir saityno peržvalgos roboto sistemos paketo diegimu naudojantis komandinės eilutės instrukcijomis. Tai dažnai lemia didelius finansinius kaštus išlaikant resursus, taip pat specifinių infrastruktūros valdymo žinių poreikį. Mokslinėje literatūroje plačiai aprašyti vieši tokių sistemų sprendimai remiasi dešimtmečių senumo IT rinkos skaičiavimo galios, resursų talpinimo pajėgumų kontekstu, kuriame debesų kompiuterijos galimybės minimos minimaliai. Daugumoje tokių literatūroje aprašytų sprendimų remiasi centralizuotais sistemos komponentais, kurie plečiant sistemą lemia „butelio kaklelio“ efektą ir neleidžia pasiekti tiesinio pajėgumų išaugimo efekto. Komercinių saityno peržvalgos sistemų (tokių kaip \textit{„Googlebot“}) architektūros yra slepiamos, nes lemia strateginę šių kompanijų sėkmę. Literatūroje taip pat stinga informacijos apie modernių saityno programų žvalgymo procesą, nors jis tik pasunkina padėtį, nes nuorodos tokiose svetainėse generuojamos dinamiškai, kai puslapis užkraunamas. Aprašytos problemos dėl apribotų resursų dažnai neleidžia mažesnėms įmonėms, startuoliams atlikti platesnio Interneto svetainių žvalgymo proceso ir užkerta kelią neišnaudotoms rinkos galimybėms. 
+    
+    Šiame darbe nagrinėjama galimybė saityno peržvalgos sistemą realizuoti pasinaudojant viešo debesų kompiuterijos tiekėjo siūlomomis paslaugomis ir resursais. Tai leistų dinamiškai koreguoti tokių sistemų veikimo pajėgumus, mokėti už skaičiavimo laiką tik atliekant žvalgymo procesą (pay-as-you-go modelis). Būtų išvengiama sudėtingų infrastruktūros, duomenų centrų priežiūros procesų. Rašto darbe plačiai remiamasi Kalifornijos universiteto Mersedo miesto mokslininkų Mehdi Bahrami, Mukesh Singhal, Zixuan Zhuang atlika studija \cite{MercedCloudBasedWebCrawler} apie išskirstytą debesų kompiuterijos sprendimu grįstą saityno peržvalgos sistemą ir naudojamasi pasiūlyta aukšto lygio tokio tipo sistemos architektūra. Pabrėžtina, jog nurodomoje studijoje nėra pasiekiama prototipinė realizacija, todėl darbe įgyvendinamas toks prototipas ir plačiau eksperimentiškai įvertinamos jo veikimo galimybės.
 \\
 
-\textbf{Darbo tikslas} - .
+\textbf{Darbo tikslas} -- įvertinti viešų debesų kompiuterijos tiekėjų sprendimais grįsto saityno peržvalgos roboto sprendimo panaudojamumo galimybes ir kaštus atsižvelgiant į modernių saityno programų žvalgymo problemą.
 \\
 
 \textbf{Darbe keliami uždaviniai}:
 
 \begin{enumerate}
-    \item Vienas
-    \item Du
-    \item Trys
-    \item Keturi
-    \item Penki
-    \item Šeši
+    \item Apžvelgti saityno peržiūros robotų sistemų funkcionalumo specifiką siekiant detalizuoti apibrėžiamo prototipo veikimo ribas.
+    \item Identifikuoti kylančius pagrindinius saityno žvalgymo sistemų  iššūkius.
+    \item Apibrėžti literatūroje sutinkamus pagrindinius saityno peržvalgos sistemų architektūrinius komponentus.
+    \item Suformuluoti funkcinius ir nefunkcinius reikalavimus debesų kompiuterijos technologijomis grįstam prototipui.
+    \item Aprašyti prototipo realizacijai pasirinktus architektūrinius sprendimus: programavimo įrankius, technologijas ir debesų kompiuterijos platformas, paslaugas ir resursus.
+    \item Sudiegus prototipo sprendimą eksperimentiniu būdu įvertinti saityno žvalgymo greičio mastus ir sistemos išplėtimo galimybes.
 \end{enumerate}
