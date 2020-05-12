@@ -1,24 +1,60 @@
 \section{Saityno peržiūros sistemų architektūrų apžvalga}
 
+Šiame skyriuje analizuojamos mokslinėje literatūroje aprašytos saityno peržvalgos roboto sistemų realizacijos -- pagrindiniai komponentai, jų funkcinės atsakomybės, charakteristikos, atliekama palyginamoji analizė tarp skirtingų aprašytų realizacijų.
+
 \subsection{Pagrindiniai sistemos komponentai}
 
-\subsubsection{Žvalgymo roboto „pasienis“}
+M.Najorc ir C. Olston mokslinė saityno peržvalgos sistemų apžvalga (\cite{StanfWebCrawl}) formalizuoja anksčiau literatūroje aprašytas tokių sistemų dizaino specifikas. Joje nusakoma išskirstyto peržvalgos roboto sistemos architektūra -- skirtingose mašinose egzistuojantys žvalgymo procesai, kiekvienas jų turintis keletą lygiagrečiai veikiančių agentų gijų, kurios atlieka kartotinius žvalgymo ciklo žingsius, kuriuose dalyvauja išskiriami pagrindiniai 8 struktūriniai sistemos elementai.
 
-\subsubsection{Parsiuntimo modulis}
+\subsubsection{„Pasienis“}
 
-\subsubsection{Saityno indekso saugyklos repozitorija}
+„Pasienio“ duomenų struktūra (angl. -- \textit{URL Frontier}) saugo URL\footnote{URL - Uniform Resource Locator} adresų sąrašą, kurie bus aplankyti, iš šio sąrašo paduodamas adresas žvalgymo agento gijai pagal atitinkamas žvalgymo mandagumo (angl. -- \textit{Politeness}) ir prioritizavimo (angl. -- \textit{Priority}) politikas. Tai viena iš pagrindinių žvalgymo roboto sistemos būsenos duomenų struktūrų. Jai keliami šie pagrindiniai funkcionalumo reikalavimai:
+\begin{itemize}
+    \item Pridėti URL adresą į sąrašą
+    \item Nuskaityti URL adresą iš sąrašo
+\end{itemize}
+
+\subsubsection{HTTP parsiuntimo modulis}
+
+Žvalgymo agentui gavus URL adresą iškviečiamas HTTP modulis, kuris pirmiausia kreipiasi į \textit{DNS adreso išaiškinimo} komponentą tam, jog būtų nustatytas URL resurso serverio vardo IP protokolo adresas \cite{StanfWebCrawl}. Šis veiksmas reikalingas tam, kad būtų minimizuotas HTTP užklausos atsakymo laikas (išvengiama DNS išaiškinimo užklausų į išorinius serverius).
+
+\subsubsection{Saityno nuorodų ištraukiklis}
+
+Šis komponentas (angl. -- \textit{Link extractor}) nuskaito parsiųsto HTML dokumento turinį ir išgauna visas HTML nuorodas tiek į išorinius (angl. -- \textit{offsite links}), tiek į vidinius (\textit{in-site links}) žiniatinklio serverio puslapius.
+
+\subsubsection{Adresų skirstiklis}
+
+Šis modulis (angl. -- \textit{URL distributor}) atsakingas už išgautų nuorodų priskyrimą atitinkamiems žvalgymo procesams.
+
+\subsubsection{Adresų filtras}
+
+Komponentas, kuris filtruoja priskirtus URL adresus ir gali išmesti taisyklių neatitinkančias nuorodas (pvz.: puslapiai įtraukti į juodąjį sąrašą). Taisyklės gali būti specializuotos kiekvienam žvalgymui atskirai.
+
+\subsubsection{Dublikatų šalintojas}
+
+Modulis (angl. -- \textit{Duplicate URL Detector}), kuris saugo visų iki šiol aplankytų nuorodų indikatorius ir praleidžia tik tas nuorodas, kurios anksčiau nebuvo sutiktos. Tai antroji žvalgymo roboto sistemos būsenos dalis (pirmoji -- „pasienio“ komponento žvalgytinų adresų sąrašas), kuriai keliami šie pagrindiniai reikalavimai:
+
+\begin{itemize}
+    \item Pridėti URL adreso aplankymo indikatorių į sąrašą
+    \item Atlikti URL priklausymo sąrašui testą
+\end{itemize}
+
+\subsubsection{Adresų prioritizuotojas}
+
+Komponentas (angl. -- \textit{URL Prioritizer}), kuris kiekvienam URL adresui priskiria tam tikrą prioritetą pagal specializuotus saityno peržvalgos roboto sistemos pasirinkimo politikos faktorius, tokius kaip nustatomas puslapio svarbos laipsnis ar puslapio keitimosi greičio faktorius.
+
 
 \subsection{Sistemos UML veiklos diagrama}
 
+Atsivelgus į 3.1 poskyrio struktūrinius komponentus pagal \cite{StanfWebCrawl} pasiūlytą schematinį dizainą, galima sudaryti veiklos diagramą, parodančią sistemos ciklinį funkcionavimą.
+
 \input{chapters/figures/web_crawler_activity_diagram}
 
-\subsection{Viešai prieinamų sistemų realizacijų apžvalga}
+\subsection{Viešai prieinamų realizacijų apžvalga}
 
 Šiame skyriuje apžvelgiamos keletas žinomiausių viešuose akademiniuose literatūros šaltiniuose aprašytų saityno peržvalgos robotų sistemų architektūrų ir siekiama palyginti dizaino sprendimus įvertinant stipriąsias, silpnąsias tokių sistemų puses, rasti bendras šio tipo sistemų komponentes.
 
 \input{chapters/architectures/mercator}
 
-\subsubsection{„Heritrix“ sistemos architektūra}
-\subsubsection{„UbiCrawler“ sistemos architektūra}
+\subsubsection{„PolyBot“ sistemos architektūra}
 \subsubsection{„BUbiNG“ didelio masto žvalgymo sistemos architektūra}
-\subsubsection{Debesų kompiuterija grįstos sistemos architektūra}

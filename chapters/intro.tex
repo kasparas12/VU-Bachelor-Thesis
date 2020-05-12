@@ -7,19 +7,20 @@
     
     Literatūroje absoliuti dauguma aprašytų viešų saityno peržvalgos sistemų architektūrų ir jų realizacijų remiasi sudėtingos infrastruktūros nuoma ar pirkimu, jos paruošimu (aplinkų konfigūravimas) ir saityno peržvalgos roboto sistemos paketo diegimu naudojantis komandinės eilutės instrukcijomis. Tai dažnai lemia didelius finansinius kaštus išlaikant resursus, taip pat specifinių infrastruktūros valdymo žinių poreikį. Mokslinėje literatūroje plačiai aprašyti vieši tokių sistemų sprendimai remiasi dešimtmečių senumo IT rinkos skaičiavimo galios, resursų talpinimo pajėgumų kontekstu, kuriame debesų kompiuterijos galimybės minimos minimaliai. Daugumoje tokių literatūroje aprašytų sprendimų remiasi centralizuotais sistemos komponentais, kurie plečiant sistemą lemia „butelio kaklelio“ efektą ir neleidžia pasiekti tiesinio pajėgumų išaugimo efekto. Komercinių saityno peržvalgos sistemų (tokių kaip \textit{„Googlebot“}) architektūros yra slepiamos, nes lemia strateginę šių kompanijų sėkmę. Literatūroje taip pat stinga informacijos apie modernių saityno programų žvalgymo procesą, nors jis tik pasunkina padėtį, nes nuorodos tokiose svetainėse generuojamos dinamiškai, kai puslapis užkraunamas. Aprašytos problemos dėl apribotų resursų dažnai neleidžia mažesnėms įmonėms, startuoliams atlikti platesnio Interneto svetainių žvalgymo proceso ir užkerta kelią neišnaudotoms rinkos galimybėms. 
     
-    Šiame darbe nagrinėjama galimybė saityno peržvalgos sistemą realizuoti pasinaudojant viešo debesų kompiuterijos tiekėjo siūlomomis paslaugomis ir resursais. Tai leistų dinamiškai koreguoti tokių sistemų veikimo pajėgumus, mokėti už skaičiavimo laiką tik atliekant žvalgymo procesą (pay-as-you-go modelis). Būtų išvengiama sudėtingų infrastruktūros, duomenų centrų priežiūros procesų. Rašto darbe plačiai remiamasi Kalifornijos universiteto Mersedo miesto mokslininkų Mehdi Bahrami, Mukesh Singhal, Zixuan Zhuang atlika studija \cite{MercedCloudBasedWebCrawler} apie išskirstytą debesų kompiuterijos sprendimu grįstą saityno peržvalgos sistemą ir naudojamasi pasiūlyta aukšto lygio tokio tipo sistemos architektūra. Pabrėžtina, jog nurodomoje studijoje nėra pasiekiama prototipinė realizacija, todėl darbe įgyvendinamas toks prototipas ir plačiau eksperimentiškai įvertinamos jo veikimo galimybės.
+    Šiame darbe nagrinėjama galimybė saityno peržvalgos sistemą realizuoti pasinaudojant viešo debesų kompiuterijos tiekėjo siūlomomis paslaugomis ir resursais. Tai leistų dinamiškai koreguoti tokių sistemų veikimo pajėgumus, mokėti už skaičiavimo laiką tik atliekant žvalgymo procesą (pay-as-you-go modelis). Būtų išvengiama sudėtingų infrastruktūros, duomenų centrų priežiūros procesų. Rašto darbe plačiai remiamasi Kalifornijos universiteto Mersedo miesto mokslininkų Mehdi Bahrami, Mukesh Singhal, Zixuan Zhuang atlika studija \cite{MercedCloudBasedWebCrawler} apie išskirstytą debesų kompiuterijos sprendimu grįstą saityno peržvalgos sistemą ir naudojamasi pasiūlyta aukšto lygio tokio tipo sistemos architektūra. Pabrėžtina, jog nurodomoje studijoje nėra pasiekiama prototipinė realizacija, todėl darbe įgyvendinamas panašios, pakoreguotos architektūros saityno peržvalgos roboto sistemos prototipas ir plačiau eksperimentiškai įvertinamos jo veikimo galimybės.
 \\
 
-\textbf{Darbo tikslas} -- įvertinti viešų debesų kompiuterijos tiekėjų sprendimais grįsto saityno peržvalgos roboto sprendimo panaudojamumo galimybes ir kaštus atsižvelgiant į modernių saityno programų žvalgymo problemą.
+\textbf{Darbo tikslas} -- įvertinti viešų debesų kompiuterijos tiekėjų sprendimais grįsto saityno peržvalgos roboto sprendimo panaudojamumo, plečiamumo galimybes ir kaštus atsižvelgiant į klientinėje pusėje turinį dinamiškai generuojančių svetainių žvalgymo problemą.
 \\
 
 \textbf{Darbe keliami uždaviniai}:
 
 \begin{enumerate}
-    \item Apžvelgti saityno peržiūros robotų sistemų funkcionalumo specifiką siekiant detalizuoti apibrėžiamo prototipo veikimo ribas.
-    \item Identifikuoti kylančius pagrindinius saityno žvalgymo sistemų  iššūkius.
+    \item Apžvelgti saityno peržiūros roboto sistemų probleminę sritį siekiant detalizuoti apibrėžiamo prototipo veikimo ribas.
+    \item Identifikuoti modernių žiniatinklio puslapių žvalgymo problematiką ir rinkoje taikomus sprendimus
     \item Apibrėžti literatūroje sutinkamus pagrindinius saityno peržvalgos sistemų architektūrinius komponentus.
-    \item Suformuluoti funkcinius ir nefunkcinius reikalavimus debesų kompiuterijos technologijomis grįstam prototipui.
-    \item Aprašyti prototipo realizacijai pasirinktus architektūrinius sprendimus: programavimo įrankius, technologijas ir debesų kompiuterijos platformas, paslaugas ir resursus.
-    \item Sudiegus prototipo sprendimą eksperimentiniu būdu įvertinti saityno žvalgymo greičio mastus ir sistemos išplėtimo galimybes.
+    \item Suformuluoti funkcinius ir nefunkcinius reikalavimus debesų kompiuterijos technologijomis pagrįsto prototipo architektūrai.
+    \item Sukurti ir aprašyti detalų prototipo architektūrinį dizainą -- struktūrą, veikimo dinamiką, naudojamas debesų kompiuterijos technologijas
+    \item Įgyvendinti suprojektuotą prototipą
+    \item Eksperimentiniu tyrimu įvertinti sukurto prototipo saityno žvalgymo greitį, sistemos dalių apkrovas, išplėtimo galimybes ir kaštus.
 \end{enumerate}
