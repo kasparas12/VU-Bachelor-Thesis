@@ -1,37 +1,40 @@
-\section{Saityno peržiūros roboto sistemos apžvalga}
+\section{Peržiūros roboto apžvalga}
 
-Šiame skyriuje analizuojama teorinė saityno peržiūros roboto sistemų medžiaga, esminės funkcinės charakteristikos, nagrinėjamos skirtingos tokių sistemų kategorijos. Skyriaus medžiagos siekis -- sudaryti skaitytojui aiškesnį probleminės srities suvokimo kontekstą.
+Šiame skyriuje analizuojama teorinė saityno peržiūros roboto sistemų medžiaga, esminės funkcinės charakteristikos, nagrinėjamos skirtingos tokių sistemų kategorijos. Skyriaus siekis -- sudaryti skaitytojui aiškesnį probleminės srities kontekstą.
 
 \subsection{Keliavimas žiniatinklio nuorodomis}
 
-Saitynas ir jį sudarantys puslapių ryšiai dažnai apibūdinami pasitelkiant grafų teorijos terminologiją. Galima teigti, jog kiekvienas puslapis yra viršūnė, o nuorodos -- briaunos, kurioms priskiriama kryptis, todėl galima teigti, kad keliavimas žiniatinkliu pasitelkiant žvalgymo robotą yra keliavimas orientuotu grafu \cite{CategoriesOfWebCrawlersAndOverview}. Nuorodos yra paprasčiausi HTML žymėjimo kalbos saitai (angl. \textit{hyperlinks}). Keliavimo strategija tokiose sistemose yra didelė problema, analizuojama ne viename moksliniame straipsnyje.
+Saitynas ir jį sudarantys puslapių ryšiai dažnai apibūdinami pasitelkiant grafų teorijos terminologiją. Galima teigti, jog kiekvienas puslapis yra viršūnė, o nuorodos -- briaunos, kurioms priskiriama kryptis, todėl galima teigti, kad keliavimas žiniatinkliu pasitelkiant žvalgymo robotą yra keliavimas orientuotu grafu \cite{CategoriesOfWebCrawlersAndOverview}. Nuorodos yra paprasčiausi HTML žymėjimo kalbos saitai (angl. \textit{hyperlinks}). Keliavimo strategija tokiose sistemose yra didelė problema, analizuojama ne viename moksliniame straipsnyje. Kaip pastebima iš \ref{fig:graph_structure} paveikslėlio, nuorodos gali būti tiek išorinės (vedančios į kitas svetaines, prisklausančias kitiems saityno serveriams), tiek vidinės, sudarančios svetainės hierarchinę struktūrą.
+
 \input{chapters/figures/graph_structure}
-Kaip pastebima iš \ref{fig:graph_structure} paveikslėlio, nuorodos gali būti tiek išorinės (vedančios į kitas svetaines, prisklausančias kitiems saityno serveriams), tiek vidinės, sudarančios svetainės hierarchinę struktūrą.
 
 \subsection{Bazinis veikimo algoritmas}
 
-Saityno peržiūros robotų sistemų funkcinis algoritmas nėra sudėtingas -- esminė tokių sistemų užduotis yra turint pradinį URL adresų sąrašą parsiųsti šių puslapių turinį naudojantis HTTP protokolu, iš parsiųstų HTML dokumentų išgauti hipernuorodas ir jas suabsoliutinus (nustačius ir resurso serverio vardą) pridėti į lankytinų nuorodų sąrašą tolesiam žvalgymui \cite{StanfWebCrawl}. Parsiųsti dokumentai saugomi didelėse saugyklose -- failinėse sistemose ar duomenų bazėse ir gali būti naudojami tolesniam papildomui apdorojimui (pvz.: svetainės indeksavimui ir semantiniam temos nustatymui, didžiųjų duomenų gavybai ir jų struktūrizavimui ar kt.)
+Saityno peržiūros robotų sistemų funkcinis algoritmas nėra sudėtingas -- esminė tokių sistemų užduotis yra turint pradinį URL adresų sąrašą parsiųsti šių puslapių turinį naudojantis HTTP protokolu, iš parsiųstų HTML dokumentų išgauti hipernuorodas ir jas suabsoliutinus (nustačius ir resurso serverio vardą) pridėti į lankytinų nuorodų sąrašą tolesiam žvalgymui \cite{StanfWebCrawl}. Parsiųsti dokumentai saugomi didelėse talpyklose -- tinkle išskirstytose failinėse sistemose ar duomenų bazėse ir gali būti naudojami tolesniam papildomui apdorojimui (pvz.: svetainės indeksavimui ir semantiniam temos nustatymui, didžiųjų duomenų gavybai ir jų struktūrizavimui ar kt.)
+
+Supaprastinta abstrakti tokių sistemų veikimo schema pateikiama \ref{fig:high_level_architecture} paveikslėlyje. Schemoje pastebimas ciklinis veikimo principas -- nuorodos analizuojamos nuolat iki kol ištuštėja lankytinų puslapių sąrašas arba inicijuojamas sistemos darbo nutraukimas iš vartotojo pusės. Tokios sistemos privalo pasižymėti aukštu lygiagretaus agentų veikimo lygiu ir efektyviai išnaudoti sistemos tinklo, procesoriaus ir operatyviosios atminties resursus. Taip pat aktualus ir didelio kiekio duomenų talpinimo klausimas -- saugomi šimtai milijonų dokumentų ir nuorodų, o tai reikalauja didelių talpinimo resursų ir optimalios prieigos prie jų.
 
 \input{chapters/figures/web_crawler_high_level_architecture}
-Supaprastinta abstrakti tokių sistemų veikimo schema pateikiama \ref{fig:high_level_architecture} paveikslėlyje. Taigi, iš schemos pastebimas ciklinis veikimo principas -- nuorodos analizuojamos nuolat iki kol ištuštėja lankytinų puslapių sąrašas arba inicijuojamas sistemos darbo nutraukimas iš vartotojo pusės. Tokios sistemos privalo pasižymėti aukštu lygegretaus agentų veikimo lygiu ir efektyviai išnaudoti sistemos tinklo, procesoriaus ir operatyviosios atminties resursus. Taip pat aktualus ir didelio kiekio duomenų talpinimo klausimas -- saugomi šimtai milijonų dokumentų ir nuorodų, o tai reikalauja didelių talpinimo resursų ir optimalios prieigos prie jų.
+
 
 \subsection{Palyginimas su saityno duomenų rinkimo sistemomis}
-Terminai \textbf{saityno žvalgymas} (angl. \textit{Web Crawling}) ir \textbf{saityno duomenų rinkimas} (angl. \textit{Web Scraping}) dažnai vartojami kaip sinonimai nors jų reikšmės skiriasi. Siekiant įvesti aiškią skirtį ir apibrėžti darbe nagrinėjamo tipo sistemų funkcionalumo ribas, šiame skyriuje atliekamas terminų palyginimas. 
+Terminai \textbf{saityno žvalgymas} (angl. \textit{Web Crawling}) ir \textbf{saityno duomenų rinkimas} (angl. \textit{Web Scraping}) dažnai vartojami kaip sinonimai, nors jų reikšmės skiriasi. Siekiant įvesti aiškią skirtį ir apibrėžti darbe nagrinėjamo tipo sistemų funkcionalumo ribas, šiame skyriuje atliekamas terminų palyginimas. 
 
 \subsubsection{Skirtumai}
 
 Duomenų žvalgymas dažniausiai apima dideles saityno erdves -- vyksta tęstinis procesas, kurio metu siekiama identifikuoti puslapyje pasiekiamas hipernuorodas ir atlikti tų nuorodų tolimesnį žvalgymą. Tuo metu duomenų surinkimo sistema dažniausiai turi aiškų objektą ir jo struktūrą -- konkrečią svetainę ar duomenų bazę ir siekia išgauti tam tikrus dominančius duomenis. Galima teigti, jog saityno žvalgymo sistemos labiausiai suinteresuotos ryšių tarp puslapių nustatymui tam, kad būtų galima keliauti žiniatinkliu, o žiniatinklio duomenų surinkimo sistemų epicentre -- informacijos gavyba \cite{OxylabsScrapingVsCrawling}. \ref{tab:crawling_vs_scraping} lentelėje pateikta keletas esminių lyginamųjų charakteristikų tarp šių vartojamų terminų.
-\input{chapters/tables/crawling_vs_scraping}
 
 Nagrinėjami terminai skiriasi, tačiau yra itin susiję, nes saityno žvalgymas yra dažniausiai pirmasis informacijos gavybos etapas -- reikalingo turinio surinkimas. Žinoma, duomenų surinkimą galima atlikti be žvalgymo sistemų pagalbos, tačiau žvalgymo sistemos visada kartu naudoja duomenų surinkimo sistemas tam, kad atskirtų vertingą turinį nuo prastos reputacijos svetainės. \cite{OxylabsScrapingVsCrawling}
 
-Taigi, šiame darbe nagrinėjamos duomenų žvalgymo robotų, dar vadinamų vorais (angl. \textit{Web Spider Bot}), sistemos, kurios keliauja saitynu naudojantis išgaunamomis hipernuorodomis. Rašto darbe nėra aptariamas svetainės turinio duomenų apdorojimas, struktūrizuotos informacijos gavyba, nes tai nėra šių sistemų atsakomybės sritys.
+\input{chapters/tables/crawling_vs_scraping}
+
+Šiame rašto darbe nagrinėjamos duomenų peržiūros robotų, dar vadinamų vorais (angl. \textit{Web Spider Bot}), sistemos, kurios keliauja saitynu naudojantis išgaunamomis HTML nuorodomis (angl. -- \textit{anchor tags}). Rašto darbe nėra aptariamas svetainės turinio duomenų apdorojimas, struktūrizuotos informacijos gavyba, nes tai nėra tokių sistemų atsakomybės sritys.
 
 \input{chapters/policies}
 
-\subsection{Kategorizacija}
+\subsection{Peržiūros robotų kategorijos}
 
-Saityno peržvalgos robotų sistemos skirstomas į skirtingas kategorijas pagal taikomas žvalgymo strategijas. Jos bendrai apžvelgiamos šiame poskyryje.
+Saityno peržiūros robotų sistemos skirstomas į skirtingas kategorijas pagal taikomas žvalgymo strategijas. Jos bendrai apžvelgiamos šiame poskyryje.
 
 \subsubsection{Teminiai žvalgymo robotai}
 

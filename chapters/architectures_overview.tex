@@ -1,10 +1,10 @@
-\section{Saityno peržiūros sistemų architektūrų apžvalga}
+\section{Peržiūros robotų architektūros}
 
-Šiame skyriuje analizuojamos mokslinėje literatūroje aprašytos saityno peržvalgos roboto sistemų realizacijos -- pagrindiniai komponentai, jų funkcinės atsakomybės, charakteristikos, atliekama palyginamoji analizė tarp skirtingų aprašytų realizacijų.
+Šiame skyriuje analizuojamos mokslinėje literatūroje aprašytos saityno peržiūros roboto sistemų realizacijos -- pagrindiniai komponentai, jų funkcinės atsakomybės, charakteristikos, atliekama palyginamoji analizė tarp skirtingų aprašytų realizacijų.
 
-\subsection{Pagrindiniai sistemos komponentai}
+\subsection{Sistemos komponentai}
 
-M.Najorc ir C. Olston mokslinė saityno peržvalgos sistemų apžvalga (\cite{StanfWebCrawl}) formalizuoja anksčiau literatūroje aprašytas tokių sistemų dizaino specifikas. Joje nusakoma išskirstyto peržvalgos roboto sistemos architektūra -- skirtingose mašinose egzistuojantys žvalgymo procesai, kiekvienas jų turintis keletą lygiagrečiai veikiančių agentų gijų, kurios atlieka kartotinius žvalgymo ciklo žingsius, kuriuose dalyvauja išskiriami pagrindiniai 8 struktūriniai sistemos elementai.
+M.Najorc ir C. Olston mokslinė saityno peržiūros sistemų apžvalga (\cite{StanfWebCrawl}) formalizuoja anksčiau literatūroje aprašytas tokių sistemų dizaino specifikas. Joje nusakoma išskirstyto peržiūros roboto sistemos architektūra -- skirtingose mašinose egzistuojantys žvalgymo procesai, kiekvienas jų turintis keletą lygiagrečiai veikiančių agentų gijų, kurios atlieka kartotinius žvalgymo ciklo žingsius, kuriuose dalyvauja išskiriami pagrindiniai 8 struktūriniai sistemos komponentai.
 
 \subsubsection{„Pasienis“}
 
@@ -32,8 +32,6 @@ Komponentas, kuris filtruoja priskirtus URL adresus ir gali išmesti taisyklių 
 
 \subsubsection{Dublikatų šalintojas}
 
-Modulis (angl. -- \textit{Duplicate URL Detector}), kuris saugo visų iki šiol aplankytų nuorodų indikatorius ir praleidžia tik tas nuorodas, kurios anksčiau nebuvo sutiktos. Tai antroji žvalgymo roboto sistemos būsenos dalis (pirmoji -- „pasienio“ komponento žvalgytinų adresų sąrašas), kuriai keliami šie pagrindiniai reikalavimai:
-
 \begin{itemize}
     \item Pridėti URL adreso aplankymo indikatorių į sąrašą
     \item Atlikti URL priklausymo sąrašui testą
@@ -41,18 +39,18 @@ Modulis (angl. -- \textit{Duplicate URL Detector}), kuris saugo visų iki šiol 
 
 \subsubsection{Adresų prioritizuotojas}
 
-Komponentas (angl. -- \textit{URL Prioritizer}), kuris kiekvienam URL adresui priskiria tam tikrą prioritetą pagal specializuotus saityno peržvalgos roboto sistemos pasirinkimo politikos faktorius, tokius kaip nustatomas puslapio svarbos laipsnis ar puslapio keitimosi greičio faktorius.
+Komponentas (angl. -- \textit{URL Prioritizer}), kuris kiekvienam URL adresui priskiria tam tikrą prioritetą pagal specializuotus saityno peržiūros roboto sistemos pasirinkimo politikos faktorius, tokius kaip nustatomas puslapio svarbos laipsnis ar puslapio keitimosi greičio faktorius.
 
 
-\subsection{Sistemos UML veiklos diagrama}
+\subsection{Peržiūros vykdymo ciklas}
 
 Atsivelgus į 3.1 poskyrio struktūrinius komponentus pagal \cite{StanfWebCrawl} pasiūlytą schematinį dizainą, galima sudaryti veiklos diagramą, parodančią sistemos ciklinį funkcionavimą.
 
 \input{chapters/figures/web_crawler_activity_diagram}
 
-\subsection{Viešai prieinamų realizacijų apžvalga}
+\subsection{Literatūroje aprašytų robotų palyginamoji analizė}
 
-Šiame skyriuje apžvelgiamos keletas žinomiausių viešuose akademiniuose literatūros šaltiniuose aprašytų saityno peržvalgos robotų sistemų architektūrų ir siekiama palyginti dizaino sprendimus įvertinant stipriąsias, silpnąsias tokių sistemų puses, rasti bendras šio tipo sistemų komponentes.
+Šiame skyriuje apžvelgiamos keletas žinomiausių viešuose akademiniuose literatūros šaltiniuose aprašytų saityno peržiūros robotų sistemų architektūrų ir siekiama palyginti dizaino sprendimus įvertinant stipriąsias, silpnąsias tokių sistemų puses, rasti bendras šio tipo sistemų komponentes.
 
 \input{chapters/architectures/mercator}
 
