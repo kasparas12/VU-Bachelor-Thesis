@@ -1,4 +1,95 @@
 \section{Eksperimentinis prototipo vertinimas}
+
+Šiame skyriuje pristatomas eksperimentinis tyrimas, kurio metu vertinama įgyvendinto roboto prototipo peržiūros ir Javascript atvaizdavimo greitaveika, taip pat atskirų sistemos komponentų apkrovos.
+
+\subsection{Eksperimento struktūra}
+
+Tiriant prototipo greitaveiką, bus atliekami 2 skirtingų tipų eksperimentai:
+
+\begin{enumerate}
+    \item Roboto prototipo puslapių peržiūros greitis be Javascript atvaizdavimo agentų
+    \item Roboto prototipo puslapių peržiūros greitis su Javascript atvaizdavimo agentais
+\end{enumerate}
+
+Šis skaidymas pasirinktas norint įvertinti, kokio dydžio papildomą apkrovą sistema patiria naudojant „Chromium“ tvarkyklę ir atvaizdavimo agentus.
+
+\subsubsection{Peržiūros greitis be Javascript atvaizdavimo agentų}
+
+Vykdomos 4 skirtingos iteracijos (kiekviena iteracija trunka 30 min.), kurių metu didinamas aktyvių peržiūros agentų skaičius:
+
+\begin{enumerate}
+    \item 10 peržiūros agentų
+    \item 50 peržiūros agentų
+    \item 100 peržiūros agentų
+\end{enumerate}
+
+Kiekvienos iteracijos metu renkamos šios metrikos:
+
+\begin{itemize}
+    \item Peržiūrėtų puslapių skaičius
+    \item Aptiktų URL adresų skaičius
+    \item Aptiktų puslapių, kuriems priskirta Javascript klientinio atvaizdavimo indikacija, skaičius
+    \item Nesėkmingai peržiūrėtų puslapių skaičius (nėra HTML turinio arba robots.txt politika neleidžia peržiūrėti)
+\end{itemize}
+
+\subsubsection{Peržiūros greitis su Javascript atvaizdavimo agentais}
+
+Vykdomos 4 skirtingos iteracijos (kiekviena iteracija trunka 30 min.), kurių metu didinamas aktyvių peržiūros agentų ir Javascript atvaizdavimo agentų skaičius:
+
+\begin{enumerate}
+    \item 10 peržiūros agentų ir 1 Javascript atvaizdavimo agentas
+    \item 50 peržiūros agentų ir 5 Javascript atvaizdavimo agentai
+    \item 100 peržiūros agentų ir 10 Javascript atvaizdavimo agentų
+\end{enumerate}
+
+Kiekvienos iteracijos metu renkamos tos pačios metrikos ir šios papildomos metrikos:
+
+\begin{itemize}
+    \item Naudojant „Chromium“ tvarkyklę atvaizduotų puslapių skaičius
+    \item Papildomai rastų URL adresų skaičius (kurių nepavyko rasti paprastos HTTP užklausomis paremtų peržiūrų metu)
+\end{itemize}
+
+\subsubsection{Roboto komponentų apkrovos}
+
+Kiekvienos iteracijos metu papildomai bus stebimi šie roboto komponentai ir jų atitinkamos metrikos:
+
+\begin{itemize}
+    \item Klasterio mazgas: procesoriaus išnaudojimas, \%
+    \item Klasterio mazgas: operatyviosios atminties išnaudojimas, \%
+    \item Klasterio mazgas: disko I/O operacijų skaičius
+    \item Klasterio mazgas: tinklo srautas (įeinantis, išeinantis)
+    \item Agentų SQL registras: DTU\footnote{DTU -- Data Transaction Unit: „Azure“ abstrakti metrika, skirta įvertinti duombazės resursų naudojimą} išnaudojimas, \%
+    \item Naujų domenų užklausų žvalgymo eilė („Service Bus Queue“): E2E uždelsimo metrika
+    \item NoSQL puslapių indeksas („Azure Table Storage“): E2E uždelsimo metrika
+\end{itemize}
+
+Agentų registro, naujų domenų žvalgymo eilės ir NoSQL puslapių indekso komponentų apkrovos stebimos, nes pastarieji yra bendrai naudojami visų peržiūros ir atvaizdavimo agentų, todėl svarbu nustatyti, ar sistema nepatiria „butelio kaklelio“ efekto kuriame iš jų.
+
 \subsection{Sistemos tyrimo sąlygos}
-\subsection{Greitaveikos tyrimo rezultatai}
-\subsection{Sistemos komponentų veikimo stebėjimo rezultatai}
+
+Sistema sudiegta į „Azure Service Fabric“ klasterį. Eksperimento metu puslapių peržvalgos ir Javascript atvaizdavimo kiekiai, tap pat sistemos našumo rodikliai (angl. -- \textit{Performance Counters}) stebimi ir registruojami naudojantis „Azure Monitor“ infrastruktūra ir jos siūloma „Application Insights“ metrikų stebėjimo paslauga.
+
+\subsubsection{Skaičiavimo resursai}
+
+Eksperimento metu klasteryje naudojamas tik vienas mazgas, kurį sudaro viena virtuali mašina. Esant poreikiui visada galima klasteryje pridėti daugiau mazgų. Naudojama \textbf{„Azure D1 v2“} bendros paskirties virtuali mašina, kurios parametrai:
+\begin{itemize}
+    \item 1 vCPU (2,4 GHz Intel Xeon® E5-2673 v3)
+    \item 3,5 GB RAM operatyviosios atminties
+    \item 50 GB SSD laikinos disko vietos (3000 I/O operacijų/sec.)
+    \item 750 Mbps tinklo pralaidumas
+    \item Naudojimosi kaina: 0,0555€/val.
+\end{itemize}
+
+\subsubsection{Reliacinė duombazė}
+
+Naudojama žemiausio lygio „Azure SQL“ duombenų bazė, pasižyminti šiomis charakteristikomis:
+
+\begin{itemize}
+    \item 5 DTU vienetai (pralaidumas)
+    \item 2 GB maksimali talpa
+    \item 0,0057€/val. kaina
+\end{itemize}
+
+\subsection{Eksperimento rezultatai}
+
+\input{chapters/tables/experiment_results}
