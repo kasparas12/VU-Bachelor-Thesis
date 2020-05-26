@@ -36,19 +36,19 @@ Nagrinėjami terminai skiriasi, tačiau yra itin susiję, nes saityno žvalgymas
 
 Saityno peržiūros robotų sistemos skirstomas į skirtingas kategorijas pagal taikomas žvalgymo strategijas. Jos bendrai apžvelgiamos šiame poskyryje.
 
-\subsubsection{Teminiai žvalgymo robotai}
+\subsubsection{Plačiosios peržiūros tipo robotai}
 
-Šio tipo (angl. -- \textit{Focused Web Crawlers}) saityno žvalgymo sistemos parsiunčia tik puslapius, atitinkačius specifinę semantinę temą \cite{CategoriesOfWebCrawlersAndOverview}. Puslapiai būna glaudžiai semantiškai susiję vienas su kitu. Tokios sistemos turi sugebėti įvertinti svetainės atitikimą apibrėžtai žvalgymo temai ir nuspręsti, kokiu būdu judėti nuorodų grafu pirmyn. Viena iš pasiūlytų idėjų kaip atpažinti resurso aitikimo žvalgymo roboto temai laipsnį -- HTML žymių (angl. -- \textit{anchor tag}) elemento tekso indeksas ir jo semantinė analizė \cite{AnchorTagsSemanticAnalysis}. Strategijos silpnybė -- svetainių administratoriai lengvai gali manipuliuoti tekstu į resursus, kurie neatitinka žvalgymo robot tematikos.
+Šis tipas (\textit{angl. -- Broad-Web Crawlers}) nusako robotus, kurių atliekama saityno peržiūra reikalauja itin didelių tinklo pralaidumo resursų, aplankomų vertingų svetainių kiekis per laiko vienetą yra tokios pat svarbos metrika, kaip ir pavienio puslapio peržiūros visiško padengiamumo metrika \cite{HeritrixArchitecture}. Plačiosios peržiūros tipo robotai siekia padengti kuo didesnius saityno resursų kiekius atsižvelgiant į limituotą tinklo srautą, disko vietą ir skaičiavimo resursus \cite{HeritrixArchitecture}.
+
+\subsubsection{Teminiai peržiūros robotai}
+
+Šio tipo (angl. -- \textit{Focused Web Crawlers}) saityno žvalgymo sistemos parsiunčia tik puslapius, atitinkačius specifinę semantinę temą \cite{CategoriesOfWebCrawlersAndOverview}. Puslapiai būna glaudžiai semantiškai susiję vienas su kitu. Tokios sistemos turi sugebėti įvertinti svetainės atitikimą apibrėžtai žvalgymo temai ir nuspręsti, kokiu būdu judėti nuorodų grafu pirmyn. Viena iš pasiūlytų idėjų kaip atpažinti resurso aitikimo žvalgymo roboto temai laipsnį -- HTML žymių (angl. -- \textit{anchor tag}) elemento teksto indeksas ir jo semantinė analizė \cite{AnchorTagsSemanticAnalysis}. Strategijos silpnybė -- svetainių administratoriai lengvai gali manipuliuoti tekstu į resursus, kurie neatitinka žvalgymo robot tematikos. Šio tipo robotai atlieka mažo-vidutinio dydžio peržiūras, nereikalaujančias ypač daug tinklo ir talpos resursų, tipiškai tokios peržiūros siekia iki 10 mln. dokumentų \cite{HeritrixArchitecture}.
 
 
-\subsubsection{Inkrementiniai žvalgymo robotai}
+\subsubsection{Inkrementiniai peržiūros robotai}
 
 Tradicinės literatūroje aprašytos saityno žvalgymo sistemos periodiškai atnaujina savo turimą žiniatinklio dokumentų indeksą pakeisdamos senus dokumentus naujai parsiųstais \cite{CategoriesOfWebCrawlersAndOverview}. Inkrementiniai robotai savo turimą indeksą keičia analizuodami kiekvieno resurso pokyčio laipsnį (įvairūs semantiniai algorimtai, NPL\footnote{NLP - Natural Language Processing} algoritmai). Tokie robotai taip pat pakeičia mažiau svarbius puslapius į labiau svarbesnius, todėl išsprendžiama indeksuotų resursų naujumo ir aktualumo problema, taip pat taupoma žvalgymo roboto sistemos disko vieta, interneto srautas.
 
-\subsubsection{Išskirstyti žvalgymo robotai}
+\subsubsection{Išskirstyti peržiūros robotai}
 
-Ši kategorija labiau apibrėžia žvalgymo roboto sistemos topologinę struktūrą -- sistema susideda iš centrinio serverio, kuris valdo daug išskirstytų agentų: jiems priskiria URL adresus ir liepia atlikti HTTP žvalgybą \cite{CategoriesOfWebCrawlersAndOverview}. Tokios kategorijos sistemos skirtos išgauti plačiam žiniatinklio resursų padengiamumui, šiomis dienomis efektyviam žvalgymui tokia struktūrizacija yra tiesiog privaloma. Taip pat tokios struktūros sistemos yra atsparios tinklo ar serverių darbo nesklandumams, nes pavieniams agentams nutraukus darbą, gali būti priskiriami kiti, nauji lygiagretūs procesai \cite{CategoriesOfWebCrawlersAndOverview}.
-
-\subsubsection{Lygiagretūs žvalgymo robotai}
-
-Kategorija apibrėžia sistemos loginę struktūrą -- agentai gali veikti kaip lygiagrečios gijos, atliekančios HTTP užklausas vienu metu. Ši strategija yra būtina efektyviam puslapių parsiuntimo greičiui per laiko vienetą pasiekti \cite{CategoriesOfWebCrawlersAndOverview}.
+Ši kategorija apibrėžia žvalgymo roboto sistemos topologinę struktūrą -- sistema susideda iš centrinio serverio, kuris valdo daug išskirstytų agentų: jiems priskiria URL adresus ir liepia atlikti HTTP žvalgybą \cite{CategoriesOfWebCrawlersAndOverview}. Tokios kategorijos sistemos skirtos išgauti plačiam žiniatinklio resursų padengiamumui, šiomis dienomis efektyviam žvalgymui tokia struktūrizacija yra tiesiog privaloma. \cite{CategoriesOfWebCrawlersAndOverview}.

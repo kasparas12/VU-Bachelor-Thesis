@@ -1,5 +1,9 @@
 \section{Prototipo realizacija}
 
+Šiame skyriuje detaliai aprašomi pasirinkti architektūriniai sprendimai įgyvendinant debesų kompiuterijos technologijomis paremtą saityno peržiūros robotą.
+
+\input{chapters/requirements}
+
 Šis skyrius aprašo praktinę rašto darbo pusę -- debesų kompiuterijos technologijomis grįstos saityno peržiūros roboto realizacijos sprendimus. Architektūra ir naudojami įrankiai parinkti pagal 4 skyriuje apibrėžtus sistemos reikalavimus.
 
 \subsection{Sistemos panaudojamumas}
@@ -154,6 +158,31 @@ Tai -- „Azure NoSQL Table Storage“ duomenų bazė, kurioje saugomi visi sura
 
 Šių agentų veikimo principas beveik identiškas žvalgymo agentams -- jie turi savo domeno srities atvaizdavimo eiles. Skirtumas, jog pastarieji nenaudoja paprastų HTTP užklausų į URL adresu pasiekiamą žiniatinklio serverį, o pasitelkia kitoje „Service Fabric“ tarnyboje esančią „Chromium“ tvarkyklę, kuri turi integruotą Javascript atvaizdavimo variklį. Javascript atvaizdavimo agentai su šia tarnyba bendrauja per „Websocket“ protokolo jungtį, kuri leidžia tinklu kontroliuoti nutolusią naršyklę, tereikia paleidžiant tvarkyklę nurodyti parametrą, apibrėžiantį prisijungimo jungtį: \textit{chrome.exe --remote-debugging-port=9222}.
 
+\subsection{Panaudojamumo atvejų dinamika}
+
+Šiame poskyryje detaliau grafiškai pristatomos apibrėžtų panaudojamumo atvejų algoritminės sekos, kurios perteikiamos UML sekų diagramomis. 
+
+\subsubsection{U1.1 Inicijuoti peržvalgos procesą}
+
+Žemiau pateiktoje \ref{fig:initiate_crawling_uml_sequence} UML sekos diagramoje pavaizduotas sistemos administratoriaus inicijuojamas žvalgymo pradėjimo procesas, kurio metu pradinis URL adresų sąrašas perkeliamas į žvalgymo pasienio komponentą ir sukuriamas pradinis žvalgymo agentas.
+\input{chapters/figures/initiate_crawling_sequence_diagram}
+
+Peržvalgos sistemos administratorius yra klientinė programa, valdanti robotą. Galima realizuoti tiek žiniatinklio, tiek darbalaukinės programos klientą. Prototipo realizacijos metu klientas simuliuojamas naudojant „Service Bus Explorer“ eilių programą ir rankomis siunčiant žinutes į valdymo eilę.
+
+\subsubsection{U2 Vykdyti puslapio peržvalgą}
+
+\ref{fig:perform_crawling_uml_sequence} UML sekos diagramoje pavaizduota žvalgymo agento darbo vykdymo schema. Akcentuotina, kad šis žvalgymo procesas kartojamas iki to laiko, kai žvalgymo agento eilė tampa tuščia ir po sistemos konfigūracijoje nustatyto agento neaktyvumo intervalo, Centrinis žvalgymo variklis tiesiog panaikina nebeaktyvų žvalgymo agentą.
+
+\input{chapters/figures/perform_crawling_sequence}
+
+\subsubsection{U2.1 Įvertinti, ar puslapis vykdo klientinį Javascript atvaizdavimą}
+
+\ref{fig:perform_crawling_uml_sequence} diagramoje paminėta, jog URL adresas po žvalgymo į Javascript atvaizdavimo eilę siunčiamas tik nustačius, jog puslapis reikalauja Javascript atvaizdavimo variklio, kad galėtų dinamiškai generuoti DOM medį. Šiame punkte pateikiama UML veiklos diagrama \ref{fig:js_rendering_condition}, kurioje nurodoma, kaip prototipinė sistema atlieka šį tikrinimą.
+
+\input{chapters/figures/js_rendering_condition_activity_diagram}
+
+\pagebreak
+
 \subsection{Kiti prototipo realizacijoje panaudoti įrankiai}
 
 Šiame poskyryje aprašomos įgyvendinant prototipą panaudotos bibliotekos, vykdomosios aplinkos, programavimo kalbos.
@@ -171,29 +200,4 @@ Tai -- „Azure NoSQL Table Storage“ duomenų bazė, kurioje saugomi visi sura
       \item \textit{PuppeteerSharp} -- komunikacijai su „Chromium“ tvarkykle naudojama .NET biblioteka, kuri originaliai sukurta Node.JS platformai \cite{PuppeteerSharp}. Ši biblioteka naudojama Javascript atvaizdavimo agentų prisijungimui „Websocket“ jungtimi prie „Chromium“ tvarkyklės agento
 \end{itemize}
 
-\subsection{Panaudojamumo atvejų dinamika}
-
-Šiame poskyryje detaliau grafiškai pristatomos apibrėžtų panaudojamumo atvejų algoritminės sekos, kurios perteikiamos UML sekų diagramomis. 
-
-\subsubsection{U1.1 Inicijuoti peržvalgos procesą}
-
-Žemiau pateiktoje \ref{fig:initiate_crawling_uml_sequence} UML sekos diagramoje pavaizduotas sistemos administratoriaus inicijuojamas žvalgymo pradėjimo procesas, kurio metu pradinis URL adresų sąrašas perkeliamas į žvalgymo pasienio komponentą ir sukuriamas pradinis žvalgymo agentas.
-\input{chapters/figures/initiate_crawling_sequence_diagram}
-
-Peržvalgos sistemos administratorius yra klientinė programa, valdanti robotą. Galima realizuoti tiek žiniatinklio, tiek darbalaukinės programos klientą. Prototipo realizacijos metu klientas simuliuojamas naudojant „Service Bus Explorer“ eilių programą ir rankomis siunčiant žinutes į valdymo eilę.
-
-\pagebreak
-
-\subsubsection{U2 Vykdyti puslapio peržvalgą}
-
-\ref{fig:perform_crawling_uml_sequence} UML sekos diagramoje pavaizduota žvalgymo agento darbo vykdymo schema. Akcentuotina, kad šis žvalgymo procesas kartojamas iki to laiko, kai žvalgymo agento eilė tampa tuščia ir po sistemos konfigūracijoje nustatyto agento neaktyvumo intervalo, Centrinis žvalgymo variklis tiesiog panaikina nebeaktyvų žvalgymo agentą.
-
-\input{chapters/figures/perform_crawling_sequence}
-
-\subsubsection{U2.1 Įvertinti, ar puslapis vykdo klientinį Javascript atvaizdavimą}
-
-\ref{fig:perform_crawling_uml_sequence} diagramoje paminėta, jog URL adresas po žvalgymo į Javascript atvaizdavimo eilę siunčiamas tik nustačius, jog puslapis reikalauja Javascript atvaizdavimo variklio, kad galėtų dinamiškai generuoti DOM medį. Šiame punkte pateikiama UML veiklos diagrama \ref{fig:js_rendering_condition}, kurioje nurodoma, kaip prototipinė sistema atlieka šį tikrinimą.
-
-\input{chapters/figures/js_rendering_condition_activity_diagram}
-
-Šiame skyriuje aprašytos architektūros prototipo peržiūros greitaveika išbandoma eksperimentinio tyrimo, aprašyto 7 skyriuje, metu.
+Skyriuje detaliai išanalizuota prototipo architektūra, kurios realizacijos variantas praktiškai išbandytas tyrimo, aprašomo kitame skyriuje, metu vykdant saityno peržiūrą su skirtingu lygiagrečiai veikiančių agentų skaičiumi.
