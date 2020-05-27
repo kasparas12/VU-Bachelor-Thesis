@@ -1,8 +1,8 @@
-\section{Peržiūros roboto architektūros}
+\section{Peržiūros roboto architektūra}
 
-Šiame skyriuje analizuojamos mokslinėje literatūroje aprašytos saityno peržiūros robotų realizacijos -- pagrindiniai komponentai, jų funkcinės atsakomybės, charakteristikos, atliekama palyginamoji analizė tarp skirtingų aprašytų sistemų.
+Šiame skyriuje analizuojamos mokslinėje literatūroje aprašytos saityno peržiūros robotų realizacijos -- pagrindiniai komponentai, jų funkcinės atsakomybės, charakteristikos, atliekama palyginamoji analizė tarp nagrinėjamų peržiūros robotų.
 
-\subsection{Peržiūros roboto komponentai}
+\subsection{Komponentai}
 
 M.Najorc ir C. Olston mokslinė saityno peržiūros sistemų robotų apžvalga (\cite{StanfWebCrawl}) formalizuoja anksčiau literatūroje aprašytas tokių sistemų dizaino specifikas. Joje nusakoma išskirstyto peržiūros roboto architektūra -- skirtingose mašinose egzistuojantys žvalgymo procesai, kiekvienas jų turintis keletą lygiagrečiai veikiančių agentų gijų, kurios atlieka kartotinius žvalgymo ciklo žingsius, kuriuose dalyvauja išskiriami pagrindiniai 8 struktūriniai sistemos komponentai.
 
@@ -51,20 +51,23 @@ Atsivelgus į 3.1 poskyrio struktūrinius komponentus pagal \cite{StanfWebCrawl}
 
 \subsection{Literatūroje aprašytų robotų palyginamoji analizė}
 
-Šiame skyriuje pristatomi esminiai inžineriniai peržiūros robotų architektūrų iššūkiai ir apžvelgiama keletas žinomiausių akademiniuose šaltiniuose aprašytų saityno peržiūros robotų architektūrų siekiant palyginti, kaip kiekvienas jų sprendžia minėtasias problemas.
+Šiame skyriuje lyginama keletas žinomiausių akademiniuose šaltiniuose aprašytų saityno peržiūros robotų architektūrų siekiant suvokti, kaip kiekviena jų koordinuoja peržiūros proceso agentų darbą.
 
-\subsubsection{Peržiūros robotų archiktektūros iššūkiai}
+\subsubsection{Peržiūros robotų išplečiamumo iššūkis}
 
-Nors koncepcinis peržiūros sistemų algoritmas, aprašytas 1 skyriuje, yra labai paprastas, tokių sistemų problemos kyla sprendžiant išplėtimo iššūkius -- siekiant peržiūrėti milijardus svetainių per pagrįstai trumpą laiką ir išlaikyti peržiūrėtų svetainių naujausią galimą kopiją \cite{WCArchitectureMicrosoft}. Pagal \cite{WCArchitectureMicrosoft} apžvalgą, galima būtų iškelti šiuos pagrindinius peržiūros robotų architektūrų iššūkius:
+Nors koncepcinis peržiūros sistemų algoritmas, aprašytas 1 skyriuje, yra labai paprastas, tokių sistemų problemos kyla sprendžiant išplėtimo iššūkius -- siekiant peržiūrėti milijardus svetainių per pagrįstai trumpą laiką ir išlaikyti peržiūrėtų svetainių naujausią galimą kopiją \cite{WCArchitectureMicrosoft}. Pagal \cite{WCArchitectureMicrosoft} apžvalgą, galima būtų iškelti šį pagrindinį peržiūros robotų architektūrų iššūkį:
 
 \begin{itemize}
   \item Sugebėti vykdyti peržiūros procesą išskirstytai ir lygiagrečiai, tačiau vykdyti tai etiškai neapkraunant žiniatinklio serverio (etiško žvalgymo politika)
-  \item Priklausymo sąrašui testas -- svarbu sugebėti efektyviai patikrinti (duomenų struktūros), ar URL adresas jau buvo peržiūrėtas
-  \item Puslapio turinio dublikatų testas
-  \item „Pasienio“ duomenų struktūra turi gebėti saugoti milijardus URL adresų
 \end{itemize}
 
 \input{chapters/architectures/polybot}
 \input{chapters/architectures/mercator}
+\input{chapters/architectures/heritrix}
 
-\subsubsection{„BUbiNG“ didelio masto žvalgymo sistemos architektūra}
+\pagebreak
+
+Iš \ref{tab:architectures_comparisonl} lentelės apžvelgtų literatūroje pateikiamų klasikinių peržiūros robotų palyginimo matoma, jog aprašyti sprendimai plačiai taiko centralizuotą peržiūros modelį (koordinatorius), kuris didinant lygiagrečiai veikiančių agentų skaičių lemia ribotą greitaveiką, nes yra bendrinis visiems agentams. Taip pat pastebima, jog didžioji dauguma sprendimų nepalaiko išskirstytos tinkle peržiūros koordinacijos (nebent atskiri peržiūros procesai), išskyrus „PolyBot“, kuris teoriškai tą palaiko, tačiau pagal \cite{PolyBotArchitecture} pateikiamą literatūrinę medžiagą, tokia konfigūracija niekada nebuvo išbandyta praktiškai.
+\subsubsection{Palyginimo lentelė}
+
+\input{chapters/tables/architectures_comparison}

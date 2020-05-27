@@ -2,18 +2,6 @@
 
 V. Shkapenyuk ir T. Suel aprašytas tinkle skirtinguose mazguose išskirstytas saityno peržiūros robotas, parašytas C++ ir Python programavimo kalbomis \cite{PolyBotArchitecture}.
 
-\subsubsubsection{Peržiūros išskirstymas ir lygiagretumas}
+Aprašyta architektūra (\ref{fig:polybot} schema) pasižymi peržiūros valdiklio komponentu, kuris gauna URL adresų užklausas ir paskirsto jas parsiuntimo komponentams \cite{PolyBotArchitecture}. Kiekvienas valdiklis gali komunikuoti daugiausiai su 8 parsiuntimo moduliais \cite{PolyBotArchitecture}. Peržiūros valdikliai tokioje architektūroje sukelia „butelio kaklelio“ efektą. Kitas apribojantis šios architektūros komponentas -- peržiūros programa (angl. -- \textit{Crawling Application}), kuri atsakinga už HTML dokumentų apdorojimą, peržiūros prioritizavimą ir žvalgytinų puslapių perdavimą valdikliui \cite{PolyBotArchitecture}. Kaip teigiama \cite{PolyBotArchitecture} šaltinyje, šis komponentas gali daugiausiai apdoroti 400 puslapių per sekundę.
 
-Aprašyta architektūra pasižymi peržiūros valdiklio komponentu, kuris gauna URL adresų užklausas ir paskirsto jas parsiuntimo komponentams (Python komponentams) \cite{PolyBotArchitecture}. Kiekvienas valdiklis gali komunikuoti daugiausiai su 8 parsiuntimo moduliais \cite{PolyBotArchitecture}. Peržiūros valdikliai tokioje architektūroje sukelia „butelio kaklelio“ efektą.
-
-\subsubsubsection{Puslapio turinio dublikatų testas}
-
-Aprašytoje architektūroje nerealizuotas
-
-\subsubsubsection{Priklausymo URL sąrašui testas}
-
-Operatyviojoje atmintyje Red-Black medžio struktūros pavidalu saugomas aplanytų adresų sąrašas, kuris, pasiekus limitą, perkeliamas į disko atmintį \cite{PolyBotArchitecture}. Siekiant išvengti dažnų disko rašymo/skaitymo operacijų, šios procedūros atliekamos paketais.
-
-\subsubsubsection{„Pasienio“ komponento strukūra}
-\\ TODO.
-
+\input{chapters/figures/polybot}

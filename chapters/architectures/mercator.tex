@@ -1,19 +1,7 @@
 \subsubsection{„Mercator“ sistema}
 
-1999 m. išsamiai literatūroje autorių A.Heydon ir M.Najork aprašyta ir eksperimentiškai įvertinta išplečiama, paskirstyta saityno peržvalgos roboto architektūra. Ši sistema parašyta naudojantis Java programavimo kalba ir jos vykdomąja aplinka (angl. -- \textit{runtime environment}). Aprašytas robotas didžiąją dalį savo aprašomų duomenų struktūrų talpina disko atmintyje, taip pat nedideli buferiai saugomi operatyvioje atmintyje ir skirti pasiekti greitesnei duomenų prieigai (kešavimo mechanizmas) \cite{MercatorLiterature}.
+1999 m. išsamiai literatūroje autorių A.Heydon ir M.Najork aprašyta ir eksperimentiškai įvertinta paskirstyta saityno peržvalgos roboto architektūra. Ši sistema parašyta naudojantis Java programavimo kalba ir jos vykdomąja aplinka (angl. -- \textit{runtime environment}). Aprašytas robotas didžiąją dalį savo aprašomų duomenų struktūrų talpina disko atmintyje, taip pat nedideli buferiai saugomi operatyvioje atmintyje ir skirti pasiekti greitesnei duomenų prieigai (kešavimo mechanizmas) \cite{MercatorLiterature}.
 
 \subsubsubsection{Peržiūros išskirstymas ir lygiagretumas}
 
-Sistemoje saityno peržiūra vyksta naudojant žvalgymo procesų gijas (angl. -- \textit{Worker Threads}, kurios veikia lygiagrečiai ir įprastai sistemoje skaičiuojamos šimtais vienetų vienu metu \cite{MercatorLiterature}. Kiekviena gija atsakinga už puslapio atsiuntimą ir apdorojimą (nuorodų suradimą, suabsoliutinimą) Nors fizinės mašinos lygmenyje veikia daug gijų, tačiau sprendimas neparemtas topologiniu peržiūros išskaidymu \cite{MercatorLiterature}.
-
-\subsubsubsection{Puslapio turinio dublikatų testas}
-Naudojamas Rabino kontrolinio kodo (angl. -- \textit{fingerprint} skaičiavimo algoritmas dokumento turiniui \cite{RabinFingerprinting}, nes pačių dokumentų saugojimas žiniatinklio dydžio skalėje nėra efektyvus.
-
-\subsubsubsection{Priklausymo URL sąrašui testas}
-
-Architektūroje naudojama URL adresų lentelė, saugoma disko atmintyje, URL adresai saugomi fiksuoto ilgio kontrolinių sumų pavidalu \cite{Mercator}. Skaičiuojamos ir apjungiamos dvi kontrolinės sumos -- puslapio vardo serverio suma ir pilna URL adreso kontrolinė suma, šiuo būdu puslapiai, priklausantys tam pačiam serveriui, atmintyje saugomi lokaliau \cite{Mercator}.
-
-\subsubsubsection{„Pasienio“ komponento strukūra}
-
-Šis komponentas (angl. -- \textit{URL frontier}) saugo visų lankytinų URL adresų sąrašą, sudarytas iš nepriklausomų FIFO (angl. \textit{First-In-First-Out}) principu veikiančių eilių (angl. \textit{queues}), kurių kiekviena priskiriama atitinkam žvalgymo agentui. Taip pat, kai naujas URL adresas pridedamas į kurią nors eilę, konkreti eilė apsprendžiama pagal pridedamo adreso kanoninį vardą (angl. \textit{canonical host name}). Šie du principai įgyvendina žvalgymo roboto sistemos „mandagumo“ politiką -- užtikrinama, jog daugiausiai tik vienas žvalgymo agentas apdoros konkretų saityno serverį, todėl sistema neapkraus žvalgomo serverio resursų. Kadangi saugomas URL adresų sąrašas talpina šimtus milijonų įrašų, nagrinėjamoje sistemoje jie saugomi disko atmintyje, taip pat turimas 600 adresų buferis, saugomas operatyvioje atmintyje ir leidžiantis greičiau apdoroti nuorodas (išimti, idėti) \cite{MercatorLiterature}.
-
+Sistemoje saityno peržiūra vyksta naudojant žvalgymo procesų gijas (angl. -- \textit{Worker Threads}, kurios veikia lygiagrečiai ir įprastai sistemoje skaičiuojamos šimtais vienetų vienu metu \cite{MercatorLiterature}. Kiekviena gija atsakinga už puslapio atsiuntimą ir apdorojimą (nuorodų suradimą, suabsoliutinimą) Nors fizinės mašinos lygmenyje veikia daug gijų, tačiau sprendimas neparemtas topologiniu peržiūros išskaidymu \cite{MercatorLiterature}. Šioje architektūroje aprašomas peržiūros robotas yra centralizuotas -- egzistuoja peržiūros koordinatoriaus komponentas, kuris atsitiktiniu I/O būdu komunikuoja su lygiagrečiose gijose veikiančiais peržiūros agentais ir renka jų informaciją \cite{MercedCloudBasedWebCrawler}.

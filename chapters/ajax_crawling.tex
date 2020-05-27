@@ -17,7 +17,9 @@ Pagrindiniai tokio modelio trūkumai:
 
 \subsection{AJAX žiniatinklio programos modelis}
 
-AJAX modelis taikomas naujo tipo vieno puslapio žiniatinklio svetainėse, kurių pagrindinis bruožas -- būsena kliento pusėje ir jos atnaujinimas dinamiškai reaguojant į kliento įvykius (angl. -- \textit{DOM Events}) ir siunčiant asinchronines AJAX užklausas į serverį. Detalesnė tokio modelio schema pateikiama \input{chapters/figures/csr} paveikslėlyje.
+AJAX modelis taikomas naujo tipo vieno puslapio žiniatinklio svetainėse, kurių pagrindinis bruožas -- būsena kliento pusėje ir jos atnaujinimas dinamiškai reaguojant į kliento įvykius (angl. -- \textit{DOM Events}) ir siunčiant asinchronines AJAX užklausas į serverį. Detalesnė tokio modelio schema pateikiama \ref{fig:client_side|_rendering} paveikslėlyje.
+
+\input{chapters/figures/csr}
 
 \subsubsection{AJAX modelio žvalgymo problema}
 
@@ -26,7 +28,6 @@ Tradiciniai žvalgymo robotai keliauja žiniatinklio grafu vykdydami HTTP GET u�
 \subsubsubsection{„Googlebot“ taikoma praktika žvalgant AJAX svetaines}
 
 „Googlebot“ žvalgymo robotas paiešką atlieka 3 etapais:
-\pagebreak
 
 \begin{enumerate}
     \item Žvalgymas (angl. -- \textit{Crawling})
@@ -34,8 +35,10 @@ Tradiciniai žvalgymo robotai keliauja žiniatinklio grafu vykdydami HTTP GET u�
     \item Indeksavimas
 \end{enumerate}
 
-Atvaizdavimo etapas atliekamas būtent AJAX tipo dinaminėms svetainėms, kaip skelbiama „Google“, šiam procesui naudojama atvaizdavimo eilė, iš kurios agentai žinutes paima tuomet, kai atsilaisvina „Google“ žvalgymo infrastruktūros resursai. Tipiškai tai gali užtrukti nuo kelių minučių iki kelių savaičių. Išsamesnė „Googlebot“ žvalgymo ir atvaizdavimo (angl. -- \textit{Rendering}) schema pavaizduota \ref{fig:googlebot_rendering} paveikslėlyje.
+Atvaizdavimo etapas atliekamas būtent AJAX tipo dinaminėms svetainėms, kaip skelbiama „Google“, šiam procesui naudojama atvaizdavimo eilė, iš kurios agentai žinutes paima tuomet, kai atsilaisvina „Google“ žvalgymo infrastruktūros resursai. Tipiškai tai gali užtrukti nuo kelių minučių iki kelių savaičių. Šio modelio pagrindinė problema -- poreikis turėti efektyvią indikaciją, jog puslapis reikalauja Javascript atvaizdavimo ir jį reikia siųsti į atvaizdavmo eilę. Išsamesnė „Googlebot“ žvalgymo ir atvaizdavimo (angl. -- \textit{Rendering}) schema pavaizduota \ref{fig:googlebot_rendering} paveikslėlyje.
 
 \input{chapters/figures/googlebot_rendering}
 
 Pavaizduotoje schemoje atvaizdavimo procese yra naudojamas „Chromium“ naršyklės variklis be vartotojo sąsajos, kuris sugeba įvykdyti svetainės JavaScript kodą. Tiesa, „Google“ neatskleidžia, koks roboto svetainės užkrovimo maksimalus laukimo laikotarpis. Kaip teigiama, kol kas „Chromium“ variklis yra leidžiamas atskirai nuo bendrų „Google Chrome“ naršyklės išleidimų, todėl jo funkcionalumai ir palaikomos ECMAScript naujovės atsilieka, todėl atvaizdavimo metu „Googlebot“ gali nesuprasti naujausių svetainės sintaksės elementų. \cite{GooglebotCrawling}.
+
+Šiame skyriuje pristatytos dinaminių svetainių atvaizdavimo schemos realizacija (technologijos ir priemonės) nagrinėjama praktinėje rašto darbo dalyje, 4 ir 5 skyriuose, kuriuose taip pat nurodoma, kokiu algoritmu įgyvendinamame prototipe priskiriama indikacija, jog svetainė reikalauja dinaminio Javascript atvaizdavimo.
