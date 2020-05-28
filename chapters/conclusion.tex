@@ -1,3 +1,22 @@
 \sectionnonum{Išvados}
 
-Išanalizavus pasiektus darbo rezultatus, pateikiamos šios \textbf{išvados}:
+Išanalizavus rezultatus, pateikiamos šios \textbf{išvados}:
+
+\begin{enumerate}
+    \item Esamas debesų kompiuterijos tiekėjų siūlomų paslaugų lygis ir kainodara užtikrina galimybę efektyviai vykdyti nedidelio-vidutinio lygio automatinį saityno peržiūros procesą:
+    \begin{itemize}
+        \item 75-100 aplankomų puslapių per sekundę greitis (194 - 263 mln. puslapių per mėnesį) naudojant aprašytą architektūrą yra efektyvių debesų kompiuterijos paslaugų kaštų viršutinė riba, todėl tokios realizacijos robotai turėtų būti kategorizuoti atlikti temines peržiūras, akcentuojančias turinio kokybę, o ne aprėptį
+        
+        \item Atlikti inkrementines, plačiąsias saityno peržiūras, siekiančias 4000+ puslapių per sekundę, remiantis esamomis debesų kompiuterijos paslaugomis ir jų kainodara nėra įmanoma, nes viršijus (a) punkte nurodytą ribą, resursų naudojimo kaštai išauga eksponentiškai arba viršijama maksimali leistina paslaugos naudojimo galios riba 
+    \end{itemize}
+    
+    \item Javascript variklio naudojimas saityno peržiūros roboto darbo ciklo metu yra brangi operacija, todėl kiekvieno resurso žvalgymas pasitelkiant tokias naršyklių tvarkykles yra neefektyvus 
+    
+    \item Šiuo metu nėra universalios metodikos atpažinti faktą, jog svetainė naudoja dinaminį HTML turinio atvaizdavimą
+    
+    \item Taikant populiariųjų klientinių Javascript karkasų ar bibliotekų programinio kodo identifikaciją tarp visų puslapyje naudojamų skriptų, atlikus tokių puslapių pakartotinę peržiūrą naudojant Javascript atvaizdavimo variklį, vidutiniškai atrandama 6\% naujų URL adresų -- šis skaičius yra reikšmingas atsižvelgiant į šimtais milijonų siekiantį atrandamų URL adresų kiekį, todėl metodas užtikrina \textbf{efektyvų tikimybinį} modelį atlikti žiniatinklio peržiūros procesą įtraukiant ir modernias, dinaminį atvaizdavimą naudojančias svetaines
+    \begin{enumerate}
+        \item Metodas išlieka tikimybiniu -- egzistuoja reali galimybė neaplankyti resurso, kuris naudoja dinaminį atvaizdavimą, tačiau tam pasitelkia specializuotas, nepopuliarias bibliotekas ar karkasus
+        \item Taikant modelį privaloma atlikti svetainės naudojamų skriptų turinio analizę -- tam sunaudojamas didelis tinklo srautas, todėl efektyvi kešavimo ir kontrolinės sumos skaičiavimo strategija yra būtina
+    \end{enumerate}
+\end{enumerate}
