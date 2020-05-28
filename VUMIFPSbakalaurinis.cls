@@ -131,10 +131,9 @@
         \large
         \singlespacing
         {\begin{tabular}[t]{l l l}%
-        \medskip Atliko: &\; \@status \\
-        \medskip\bigskip   &\; \@author \hfill &\@signatureplace \\
+        \medskip Atliko: & \; \@author \hfill &\@signatureplace  \\
         \bigskip Darbo vadovas: &\; \@supervisor \hfill &\@signatureplace \\
-        \bigskip Recenzentas: &\; \@reviewer \hfill & \@signatureplace
+        \bigskip Darbo recenzentas: &\; \@reviewer \hfill & \@signatureplace
         \end{tabular} \par}%
      \end{flushright}
      \vskip 4cm

@@ -12,11 +12,13 @@ Darbe pasiekti \textbf{rezultatai}:
         \item Identifikuotos 4 peržiūros robotų kategorijos: \textbf{plačiosios peržiūros}, \textbf{teminės peržiūros}, \textbf{inkrementinės peržiūros}, \textbf{išskirstytos peržiūros}
     \end{itemize}
     
-    \item Apibrėžti saityno peržiūros robotų komponentai ir jų paskirtis: \textbf{peržiūros pasienis}, \textbf{HTTP parsiuntimo modulis}, \textbf{saityno nuorodų ištraukiklis}, \textbf{adresų skirstiklis} , \textbf{adresų filtras}, \textbf{dublikatų šalintojas}, \textbf{adresų prioritizuotojas}. Remiantis identifikuotais komponentais, UML veiklos diagrama apibrėžtas saityno peržiūros vykdymo ciklas
+    \item Apibrėžti saityno peržiūros robotų komponentai ir jų paskirtis: \textbf{peržiūros pasienis}, \textbf{HTTP parsiuntimo modulis}, \textbf{saityno nuorodų ištraukiklis}, \textbf{adresų skirstiklis}, \textbf{adresų filtras}, \textbf{dublikatų šalintojas}, \textbf{adresų prioritizuotojas}. Remiantis identifikuotais komponentais, UML veiklos diagrama apibrėžtas saityno peržiūros vykdymo ciklas
     
     
-    \item Palygintos 3 saityno peržiūros robotų architektūros analizuojant peržiūros išplečiamumo ir darbo koordinavimo aspektus: \textbf{„PolyBot}, \textbf{„Mercator“}, \textbf{„Heritrix“} 
-    
+    \item Palygintos 3 saityno peržiūros robotų architektūros analizuojant peržiūros išplečiamumo ir darbo koordinavimo aspektus: \textbf{„PolyBot}, \textbf{„Mercator“}, \textbf{„Heritrix“}:
+    \begin{itemize}
+        \item nustatyta, jog visos jos remiasi centriniu koordinatoriumi, kuris vykdant saityno peržiūros procesą ir išplečiant sistemą tampa ribojančiu faktoriumi.
+    \end{itemize}
     
     \item Palygintas \textbf{tradicinis} ir \textbf{AJAX žiniatinklio atvaizdavimo} modeliai, identifikuotas saityno peržiūros robotų ribotumas žvalgyti AJAX tipo svetaines, pristatytas „Googlebot“ peržiūros roboto taikomas modelis atvaizduojant dinaminį turinį generuojančias svetaines
     
@@ -34,6 +36,12 @@ Darbe pasiekti \textbf{rezultatai}:
         \item C\# kalba, naudojant .NET Core karkasą realizuotas apibrėžtos architektūros prototipas, aprašytos panaudotos bibliotekos
     \end{itemize}
     
+    \pagebreak
     
-    \item Atliktas prototipo vertinimas -- įvykdytas roboto veikimo stebėsenos eksperimentas, surinktos ir išanalizuotos funkcinės metrikos, taip pat prototipo komponentų apkrovos
+    \item Atliktas prototipo vertinimas -- įvykdytas roboto veikimo stebėsenos eksperimentas, surinktos ir išanalizuotos funkcinės metrikos, taip pat prototipo komponentų apkrovos, nustatyta:
+    \begin{itemize}
+        \item 75-100 aplankomų puslapių per sekundę greitis (194 - 263 mln. puslapių per mėne-sį) naudojant darbe apibrėžtą architektūrą yra efektyvių debesų kompiuterijos paslaugų kaštų viršutinė riba;
+        \item siekiant išplėsti roboto veikimo pajėgumą virš apibrėžtos ribos, susiduriama su eksponentiškai augančiomis paslaugų išlaidomis arba pasiekiamomis maksimaliomis leistinomis paslaugų naudojimosi ribomis;
+        \item taikant populiariųjų klientinių Javascript karkasų ar bibliotekų programinio kodo identifikaciją tarp visų puslapyje naudojamų skriptų, atlikus tokių puslapių pakartotinę peržiūrą naudojant Javascript atvaizdavimo variklį, vidutiniškai atrandama 6\% naujų URL adresų;
+    \end{itemize}
 \end{enumerate}
